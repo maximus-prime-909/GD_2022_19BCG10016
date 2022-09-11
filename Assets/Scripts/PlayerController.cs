@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     public float characterSpeed;
     public float gravity = 9.81f;
     public Vector3 velocity = Vector3.zero;
+    public GameObject gameOver;
+    int score = 0;
 
     private CharacterController controller;
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         PlayerData pd = new PlayerData();
-        characterSpeed = pd.speed;
+        //characterSpeed = pd.speed;
+       // gameOver.setActive(false);
     }
 
     void Update()
@@ -36,5 +39,15 @@ public class PlayerController : MonoBehaviour
         //Move
         controller.Move(movement);
 
+    }
+    public static int ScoreFetcher()
+    {
+        PlayerController pd = new PlayerController();
+        return pd.score;
+    }
+    public static void ScoreAdd()
+    {
+        PlayerController pd = new PlayerController();
+        pd.score += 1;
     }
 }

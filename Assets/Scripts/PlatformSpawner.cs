@@ -16,6 +16,8 @@ public class PlatformSpawner : MonoBehaviour
             GameObject temp = Instantiate(platformTile, nextSpawnPoint, Quaternion.identity);
             temp.transform.SetParent(platformHolder.transform);
             nextSpawnPoint = temp.transform.GetChild(rand).transform.position;
+
+            PlayerController.ScoreAdd();
         }
        /* if (spawnItems)
         {
